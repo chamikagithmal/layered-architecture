@@ -324,6 +324,7 @@ public class PlaceOrderFormController {
             connection.setAutoCommit(false);
 
             //Save the Order to the order table
+
             boolean b2 = orderDAO.saveOrder(new OrderDTO(orderId, orderDate, customerId));
 
             if (!b2) {
