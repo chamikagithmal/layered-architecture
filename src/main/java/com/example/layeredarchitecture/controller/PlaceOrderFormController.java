@@ -333,8 +333,6 @@ public class PlaceOrderFormController {
             }
 
 
-            // add data to the Order Details table
-
             for (OrderDetailDTO detail : orderDetails) {
                 boolean b3 = orderDetailsDAO.saveOrderDetails(detail);
                 if (!b3) {
