@@ -1,6 +1,7 @@
 package com.example.layeredarchitecture.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 
 public class CustomerDTO implements Serializable {
@@ -8,7 +9,7 @@ public class CustomerDTO implements Serializable {
     private String name;
     private String address;
 
-    public CustomerDTO(String id) {
+    public CustomerDTO(String code) {
     }
 
     public CustomerDTO(String id, String name, String address) {
