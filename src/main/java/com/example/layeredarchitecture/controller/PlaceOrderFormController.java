@@ -100,7 +100,6 @@ public class PlaceOrderFormController {
                 try {
                     try {
                         if (!existCustomer(newValue + "")) {
-                            //"There is no such customer associated with the id " + id
                             new Alert(Alert.AlertType.ERROR, "There is no such customer associated with the id " + newValue + "").show();
                         }
                         //Search Customer
@@ -125,7 +124,6 @@ public class PlaceOrderFormController {
 
             if (newItemCode != null) {
 
-                /*Find Item*/
                 try {
                     if (!existItem(newItemCode + "")) {
 //                        throw new NotFoundException("There is no such item associated with the id " + code);
