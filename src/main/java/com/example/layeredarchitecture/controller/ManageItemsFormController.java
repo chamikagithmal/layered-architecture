@@ -1,12 +1,8 @@
 package com.example.layeredarchitecture.controller;
 
-import com.example.layeredarchitecture.dao.CustomerDAOImpl;
 import com.example.layeredarchitecture.dao.ItemDAO;
 import com.example.layeredarchitecture.dao.ItemDAOImpl;
-import com.example.layeredarchitecture.db.DBConnection;
-import com.example.layeredarchitecture.model.CustomerDTO;
 import com.example.layeredarchitecture.model.ItemDTO;
-import com.example.layeredarchitecture.view.tdm.CustomerTM;
 import com.example.layeredarchitecture.view.tdm.ItemTM;
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
@@ -26,7 +22,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
-import java.sql.*;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -73,26 +69,26 @@ public class ManageItemsFormController {
 
     private void loadAllItems() {
         tblItems.getItems().clear();
-        /*Get all items*/
-        try {
-            ItemDAO itemDAO = new ItemDAOImpl();
-            ArrayList<ItemDTO> allItem = itemDAO.getAllItem();
-            for (ItemDTO dto : allItem) {
-                tblItems.getItems().add(
-                        new ItemTM(
-                                dto.getCode(),
-                                dto.getDescription(),
-                                dto.getUnitPrice(),
-                                dto.getQtyOnHand()
-                        ));
-            }
+            /*Get all items*/
+            try {
+                ItemDAO itemDAO = new ItemDAOImpl();
+                ArrayList<ItemDTO> allItem = itemDAO.getAllItem();
+                for (ItemDTO dto : allItem) {
+                    tblItems.getItems().add(
+                            new ItemTM(
+                                    dto.getCode(),
+                                    dto.getDescription(),
+                                    dto.getUnitPrice(),
+                                    dto.getQtyOnHand()
+                            ));
+                }
 
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
-    }
 
     private void initUI() {
         txtCode.clear();
