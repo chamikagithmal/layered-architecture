@@ -65,6 +65,7 @@ public class ManageCustomersFormController {
         loadAllCustomers();
     }
 
+
     private void loadAllCustomers() {
         tblCustomers.getItems().clear();
         /*Get all customers*/
@@ -203,6 +204,8 @@ public class ManageCustomersFormController {
             }
             CustomerDAOImpl dao = new CustomerDAOImpl();
             dao.deleteCustomer(id);
+
+            initUI();
 
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, "Failed to delete the customer " + id).show();
